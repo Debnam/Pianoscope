@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+double screenHeight;
+double screenWidth;
+
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
 
@@ -8,10 +11,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool screenSizeSet = false;
+
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
+    if (screenSizeSet == false) {
+      screenHeight = MediaQuery.of(context).size.height;
+      screenWidth = MediaQuery.of(context).size.width;
+      screenSizeSet = true;
+    }
 
     return Scaffold(
       body: Stack(
@@ -185,7 +193,9 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/settings');
+                      },
                       icon: Icon(Icons.settings),
                       iconSize: screenWidth / 9,
                       color: Colors.black,
