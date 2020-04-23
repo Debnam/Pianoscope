@@ -93,7 +93,7 @@ class _SongsPageState extends State<SongsPage> {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.fromLTRB(10.0, 2.0, 10.0, 10.0),
                     child: Material(
                       color: Colors.transparent,
                       borderRadius: BorderRadius.circular(15.0),

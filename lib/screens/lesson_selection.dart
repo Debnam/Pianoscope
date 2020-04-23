@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pianoscope/screens/chords_page.dart';
+import 'package:pianoscope/screens/scales_page.dart';
 import 'package:pianoscope/screens/songs_page.dart';
 
 class LessonSelection extends StatelessWidget {
@@ -22,7 +24,7 @@ class LessonSelection extends StatelessWidget {
                   constraints: BoxConstraints.expand(),
                   child: FlatButton(
                     onPressed: () {
-//                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => SongsPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ScalesPage()));
                     },
                     padding: EdgeInsets.only(left: 35.0, right: 10.0),
                     child: Align(
@@ -65,7 +67,7 @@ class LessonSelection extends StatelessWidget {
                   constraints: BoxConstraints.expand(),
                   child: FlatButton(
                     onPressed: () {
-//                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => SongsPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => ChordsPage()));
                     },
                     padding: EdgeInsets.only(left: 20.0, right: 40.0),
                     child: Align(
