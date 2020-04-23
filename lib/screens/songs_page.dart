@@ -37,7 +37,15 @@ class _SongsPageState extends State<SongsPage> {
       onTap: () => _focus.unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Songs'),
+          centerTitle: true,
+          title: Text(
+            'Choose a song',
+            style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.w300,
+            ),
+          ),
+          backgroundColor: Colors.black,
         ),
         body: Stack(
           children: <Widget>[

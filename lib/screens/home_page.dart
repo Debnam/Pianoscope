@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pianoscope/screens/songs_page.dart';
+import 'package:pianoscope/screens/lesson_selection.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                     elevation: 20.0,
                     shape: const CircleBorder(),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SongsPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => LessonSelection()));
                     },
                     padding: EdgeInsets.zero,
                     color: Colors.transparent,
