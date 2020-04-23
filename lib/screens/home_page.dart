@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pianoscope/screens/lesson_selection.dart';
+
+double screenHeight;
+double screenWidth;
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -10,8 +14,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+    screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: Stack(
@@ -110,8 +114,10 @@ class _HomePageState extends State<HomePage> {
                   child: RaisedButton(
                     elevation: 20.0,
                     shape: const CircleBorder(),
-                    onPressed: () {},
-                    padding: const EdgeInsets.all(0.0),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => LessonSelection()));
+                    },
+                    padding: EdgeInsets.zero,
                     color: Colors.transparent,
                     textColor: Colors.white,
                     child: Container(
@@ -130,11 +136,12 @@ class _HomePageState extends State<HomePage> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       child: Center(
-                          child: Icon(
-                        Icons.music_note,
-                        size: screenWidth / 10,
-                        color: Colors.white,
-                      )),
+                        child: Icon(
+                          Icons.music_note,
+                          size: screenWidth / 10,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ),
                 ),
