@@ -3,6 +3,7 @@ library pianoscope_constants;
 import 'package:pianoscope/models/song.dart';
 
 const songs = [
+  const Song('Upload song', 'Upload song', Difficulty.Easy),
   const Song('Fur Elise', 'Ludwig van Beethoven', Difficulty.Easy),
   const Song('Canon in D', 'Johann Pachelbel', Difficulty.Easy),
   const Song('Summer in \'20', 'Daniel Wiktorczyk', Difficulty.Easy),

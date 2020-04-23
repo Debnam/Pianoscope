@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => SongsPage()));
                     },
-                    padding: const EdgeInsets.all(0.0),
+                    padding: EdgeInsets.zero,
                     color: Colors.transparent,
                     textColor: Colors.white,
                     child: Container(
