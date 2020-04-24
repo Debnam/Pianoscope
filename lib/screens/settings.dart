@@ -23,10 +23,15 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           'Settings',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            fontSize: 24.0,
+            fontWeight: FontWeight.w300,
+          ),
         ),
+        backgroundColor: Colors.black,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,6 +59,8 @@ class _SettingsState extends State<Settings> {
               min: 0.25,
               max: 1.75,
               divisions: 6,
+              activeColor: Colors.black,
+              inactiveColor: Colors.grey,
               onChanged: (value) {
                 setState(() {
                   playbackSpeed = value;
@@ -118,6 +125,7 @@ class _SettingsState extends State<Settings> {
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Switch(
                     value: fingering,
+                    activeColor: Colors.black,
                     onChanged: (value) {
                       setState(() {
                         fingering = value;
@@ -147,6 +155,7 @@ class _SettingsState extends State<Settings> {
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Switch(
                     value: annotations,
+                    activeColor: Colors.black,
                     onChanged: (value) {
                       setState(() {
                         annotations = value;
@@ -300,7 +309,7 @@ class _SettingsState extends State<Settings> {
                   color: Colors.black.withOpacity(0.4),
                   highlightColor: Colors.grey.withOpacity(0.25),
                   selectedColor: Colors.white,
-                  fillColor: Colors.blue,
+                  fillColor: Colors.black,
                   borderRadius: BorderRadius.circular(30.0),
                   constraints: BoxConstraints(minHeight: screenHeight / 18),
                 ),
@@ -356,7 +365,7 @@ class _SettingsState extends State<Settings> {
                   color: Colors.black.withOpacity(0.4),
                   highlightColor: Colors.grey.withOpacity(0.25),
                   selectedColor: Colors.white,
-                  fillColor: Colors.blue,
+                  fillColor: Colors.black,
                   borderRadius: BorderRadius.circular(30.0),
                   constraints: BoxConstraints(minHeight: screenHeight / 18),
                 ),
@@ -412,7 +421,7 @@ class _SettingsState extends State<Settings> {
                   color: Colors.black.withOpacity(0.4),
                   highlightColor: Colors.grey.withOpacity(0.25),
                   selectedColor: Colors.white,
-                  fillColor: Colors.blue,
+                  fillColor: Colors.black,
                   borderRadius: BorderRadius.circular(30.0),
                   constraints: BoxConstraints(minHeight: screenHeight / 18),
                 ),
