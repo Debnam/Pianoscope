@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:pianoscope/components/custom_app_bar.dart';
 import 'package:pianoscope/models/song.dart';
 import 'package:pianoscope/states/home_state.dart';
@@ -21,9 +21,11 @@ class _SongsPageState extends State<SongsPage> {
   @override
   void initState() {
     super.initState();
-    KeyboardVisibilityNotification().addNewListener(
-      onHide: () => _focus.unfocus(),
-    );
+    KeyboardVisibility.onChange.listen((visible) {
+      if (!visible) {
+        _focus.unfocus();
+      }
+    });
     _focus.addListener(_onFocusChange);
   }
 

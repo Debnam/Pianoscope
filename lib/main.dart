@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pianoscope/screens/home_page.dart';
 
-void main() => runApp(Application());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+    runApp(Application());
+  });
+}
 
 class Application extends StatelessWidget {
   @override
