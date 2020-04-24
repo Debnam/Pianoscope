@@ -26,7 +26,7 @@ class _SettingsState extends State<Settings> {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Playback Speed: ${SettingsState.playbackSpeed}x',
+                  'Playback speed: ${SettingsState.playbackSpeed}x',
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black.withOpacity(0.5),
@@ -95,7 +95,7 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    'Fingering Numbers',
+                    'Fingering numbers',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black.withOpacity(0.5),
@@ -125,7 +125,7 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
-                    'Key Annotations',
+                    'Key annotations',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black.withOpacity(0.5),
@@ -256,7 +256,7 @@ class _SettingsState extends State<Settings> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                'Musical Convention',
+                'Musical convention',
                 style: TextStyle(
                   fontSize: 14,
                   color: Colors.black.withOpacity(0.5),
