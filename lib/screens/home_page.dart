@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pianoscope/components/help.dart';
 import 'package:pianoscope/screens/lesson_selection.dart';
 import 'package:pianoscope/screens/settings.dart';
 import 'package:pianoscope/states/home_state.dart';
@@ -246,7 +247,14 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.all(15.0),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => Help(),
+                backgroundColor: Colors.transparent,
+                isScrollControlled: true,
+              );
+            },
             icon: Icon(Icons.help),
             iconSize: screenWidth / 9,
             color: Colors.black,
