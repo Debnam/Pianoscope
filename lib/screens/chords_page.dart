@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pianoscope/components/custom_app_bar.dart';
 import 'package:pianoscope/components/key_selector.dart';
+import 'package:pianoscope/states/chords_state.dart';
 import 'package:pianoscope/states/home_state.dart';
 import 'package:pianoscope/utilities/constants.dart';
 
@@ -13,18 +14,6 @@ class ChordsPage extends StatefulWidget {
 }
 
 class ChordsPageState extends State<ChordsPage> {
-  String _note = 'C';
-  String _accidental = '';
-  String _chord = 'Major';
-
-  set note(String note) {
-    _note = note;
-  }
-
-  set accidental(String accidental) {
-    _accidental = accidental;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,10 +69,10 @@ class ChordsPageState extends State<ChordsPage> {
                             child: DropdownButtonFormField(
                               onChanged: (value) {
                                 setState(() {
-                                  _chord = value;
+                                  ChordsState.chord = value;
                                 });
                               },
-                              value: _chord,
+                              value: ChordsState.chord,
                               items: chords.map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -118,7 +107,7 @@ class ChordsPageState extends State<ChordsPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Center(
                           child: Text(
-                            _note + _accidental + ' $_chord',
+                            ChordsState.note + ChordsState.accidental + ' ${ChordsState.chord}',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.lightBlueAccent,
@@ -149,7 +138,8 @@ class ChordsPageState extends State<ChordsPage> {
                             onPressed: () {
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
-                              HomeState.lessonName = _note + _accidental + ' $_chord';
+                              HomeState.lessonName =
+                                  ChordsState.note + ChordsState.accidental + ' ${ChordsState.chord}';
                             },
                             child: Center(
                               child: Icon(

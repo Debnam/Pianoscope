@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pianoscope/components/custom_app_bar.dart';
 import 'package:pianoscope/components/key_selector.dart';
 import 'package:pianoscope/states/home_state.dart';
+import 'package:pianoscope/states/scales_state.dart';
 import 'package:pianoscope/utilities/constants.dart';
 
 class ScalesPage extends StatefulWidget {
@@ -13,18 +14,6 @@ class ScalesPage extends StatefulWidget {
 }
 
 class ScalesPageState extends State<ScalesPage> {
-  String _note = 'C';
-  String _accidental = '';
-  String _scale = 'Major (Ionian)';
-
-  set note(String note) {
-    _note = note;
-  }
-
-  set accidental(String accidental) {
-    _accidental = accidental;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,10 +69,10 @@ class ScalesPageState extends State<ScalesPage> {
                             child: DropdownButtonFormField(
                               onChanged: (value) {
                                 setState(() {
-                                  _scale = value;
+                                  ScalesState.scale = value;
                                 });
                               },
-                              value: _scale,
+                              value: ScalesState.scale,
                               items: scales.map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
@@ -118,7 +107,7 @@ class ScalesPageState extends State<ScalesPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Center(
                           child: Text(
-                            _note + _accidental + ' $_scale',
+                            ScalesState.note + ScalesState.accidental + ' ${ScalesState.scale}',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.lightBlueAccent,
@@ -149,7 +138,8 @@ class ScalesPageState extends State<ScalesPage> {
                             onPressed: () {
                               Navigator.of(context).pop();
                               Navigator.of(context).pop();
-                              HomeState.lessonName = _note + _accidental + ' $_scale';
+                              HomeState.lessonName =
+                                  ScalesState.note + ScalesState.accidental + ' ${ScalesState.scale}';
                             },
                             child: Center(
                               child: Icon(

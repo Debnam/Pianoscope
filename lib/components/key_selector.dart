@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pianoscope/screens/chords_page.dart';
-import 'package:pianoscope/screens/scales_page.dart';
+import 'package:pianoscope/states/chords_state.dart';
+import 'package:pianoscope/states/scales_state.dart';
 import 'package:pianoscope/utilities/constants.dart';
 import 'package:pianoscope/screens/home_page.dart';
 
@@ -20,11 +21,12 @@ class _KeySelectorState extends State<KeySelector> {
 
   final State _parent;
   final String _title;
-  final List<bool> _note = [true, false, false, false, false, false, false];
-  final List<bool> _accidental = [false, true, false];
+  List<bool> _note = [true, false, false, false, false, false, false];
+  List<bool> _accidental = [false, true, false];
 
   @override
   Widget build(BuildContext context) {
+    retrieveState();
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -58,11 +60,7 @@ class _KeySelectorState extends State<KeySelector> {
                     }
                   }
                   setState(() {
-                    if (_parent is ChordsPageState) {
-                      (_parent as ChordsPageState).note = notes[index].trim();
-                    } else {
-                      (_parent as ScalesPageState).note = notes[index].trim();
-                    }
+                    setNoteState(index);
                     _parent.setState(() {});
                   });
                 },
@@ -91,17 +89,7 @@ class _KeySelectorState extends State<KeySelector> {
                     }
                   }
                   setState(() {
-                    String accidental = '';
-                    if (index == 0) {
-                      accidental = '-flat';
-                    } else if (index == 2) {
-                      accidental = '-sharp';
-                    }
-                    if (_parent is ChordsPageState) {
-                      (_parent as ChordsPageState).accidental = accidental;
-                    } else {
-                      (_parent as ScalesPageState).accidental = accidental;
-                    }
+                    setAccidentalState(index);
                     _parent.setState(() {});
                   });
                 },
@@ -134,5 +122,42 @@ class _KeySelectorState extends State<KeySelector> {
         ),
       );
     }).toList();
+  }
+
+  void retrieveState() {
+    if (_parent is ChordsPageState) {
+      _note = ChordsState.noteList;
+      _accidental = ChordsState.accidentalList;
+    } else {
+      _note = ScalesState.noteList;
+      _accidental = ScalesState.accidentalList;
+    }
+  }
+
+  void setNoteState(int index) {
+    if (_parent is ChordsPageState) {
+      ChordsState.noteList = _note;
+      ChordsState.note = notes[index].trim();
+    } else {
+      ScalesState.noteList = _note;
+      ScalesState.note = notes[index].trim();
+    }
+  }
+
+  void setAccidentalState(int index) {
+    String accidental = '';
+    if (index == 0) {
+      accidental = '-flat';
+    } else if (index == 2) {
+      accidental = '-sharp';
+    }
+
+    if (_parent is ChordsPageState) {
+      ChordsState.accidentalList = _accidental;
+      ChordsState.accidental = accidental;
+    } else {
+      ScalesState.accidentalList = _accidental;
+      ScalesState.accidental = accidental;
+    }
   }
 }
