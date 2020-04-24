@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pianoscope/components/custom_app_bar.dart';
 import 'package:pianoscope/components/key_selector.dart';
 import 'package:pianoscope/states/home_state.dart';
 import 'package:pianoscope/utilities/constants.dart';
@@ -27,17 +28,7 @@ class ChordsPageState extends State<ChordsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Choose a chord',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        backgroundColor: Colors.black,
-      ),
+      appBar: CustomAppBar('Choose a chord'),
       body: Stack(
         children: <Widget>[
           Container(

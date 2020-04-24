@@ -59,20 +59,20 @@ class _KeySelectorState extends State<KeySelector> {
                   }
                   setState(() {
                     if (_parent is ChordsPageState) {
-                      (_parent as ChordsPageState).note = notes[index];
+                      (_parent as ChordsPageState).note = notes[index].trim();
                     } else {
-                      (_parent as ScalesPageState).note = notes[index];
+                      (_parent as ScalesPageState).note = notes[index].trim();
                     }
                     _parent.setState(() {});
                   });
                 },
                 isSelected: _note,
                 children: _buildChildren(notes),
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.grey,
                 highlightColor: Colors.grey.withOpacity(0.25),
-                selectedColor: Colors.white,
-                fillColor: Colors.blue,
-                borderRadius: BorderRadius.circular(5.0),
+                selectedColor: Colors.grey,
+                fillColor: Colors.tealAccent,
+                borderRadius: BorderRadius.circular(50.0),
                 borderWidth: 1.5,
                 constraints: BoxConstraints(minHeight: 0.0, minWidth: screenWidth / 8.5),
               ),
@@ -110,8 +110,8 @@ class _KeySelectorState extends State<KeySelector> {
                 color: Colors.black.withOpacity(0.5),
                 highlightColor: Colors.grey.withOpacity(0.25),
                 selectedColor: Colors.white,
-                fillColor: Colors.blue,
-                borderRadius: BorderRadius.circular(5.0),
+                fillColor: Colors.tealAccent,
+                borderRadius: BorderRadius.circular(50.0),
                 borderWidth: 1.5,
               ),
             ),

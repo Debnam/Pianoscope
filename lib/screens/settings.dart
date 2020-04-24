@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pianoscope/components/custom_app_bar.dart';
 import 'package:pianoscope/screens/home_page.dart';
+import 'package:pianoscope/states/settings_state.dart';
 
 class Settings extends StatefulWidget {
   Settings({Key key}) : super(key: key);
@@ -10,42 +12,23 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  double playbackSpeed = 1.0;
-  List<bool> whiteKeyColor = [true, false, false, false, false];
-  List<bool> blackKeyColor = [true, false, false, false, false];
-  bool fingering = true;
-  bool annotations = false;
-  List<bool> musicalConvention = [true, false];
-  List<bool> annotationSize = [false, true, false];
-  List<bool> annotationBackground = [true, false, false];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Settings',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.w300,
-          ),
-        ),
-        backgroundColor: Colors.black,
-      ),
+      appBar: CustomAppBar('Settings'),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+              padding: const EdgeInsets.only(left: 15.0, top: 18.0),
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
-                  'Playback Speed: ${playbackSpeed}x',
+                  'Playback Speed: ${SettingsState.playbackSpeed}x',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Colors.black.withOpacity(0.5),
                   ),
                 ),
@@ -55,15 +38,13 @@ class _SettingsState extends State<Settings> {
           Expanded(
             flex: 1,
             child: Slider(
-              value: playbackSpeed,
+              value: SettingsState.playbackSpeed,
               min: 0.25,
               max: 1.75,
               divisions: 6,
-              activeColor: Colors.black,
-              inactiveColor: Colors.grey,
               onChanged: (value) {
                 setState(() {
-                  playbackSpeed = value;
+                  SettingsState.playbackSpeed = value;
                 });
               },
             ),
@@ -76,7 +57,7 @@ class _SettingsState extends State<Settings> {
                 child: Text(
                   'White key highlight color',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Colors.black.withOpacity(0.5),
                   ),
                 ),
@@ -85,7 +66,7 @@ class _SettingsState extends State<Settings> {
           ),
           Expanded(
             flex: 2,
-            child: colorOptions(whiteKeyColor),
+            child: colorOptions(SettingsState.whiteKeyColor),
           ),
           Expanded(
             child: Align(
@@ -95,7 +76,7 @@ class _SettingsState extends State<Settings> {
                 child: Text(
                   'Black key highlight color',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     color: Colors.black.withOpacity(0.5),
                   ),
                 ),
@@ -104,7 +85,7 @@ class _SettingsState extends State<Settings> {
           ),
           Expanded(
             flex: 2,
-            child: colorOptions(blackKeyColor),
+            child: colorOptions(SettingsState.blackKeyColor),
           ),
           Expanded(
             flex: 2,
@@ -116,7 +97,7 @@ class _SettingsState extends State<Settings> {
                   child: Text(
                     'Fingering Numbers',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Colors.black.withOpacity(0.5),
                     ),
                   ),
@@ -124,11 +105,11 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Switch(
-                    value: fingering,
-                    activeColor: Colors.black,
+                    value: SettingsState.fingering,
+                    activeColor: Colors.blue,
                     onChanged: (value) {
                       setState(() {
-                        fingering = value;
+                        SettingsState.fingering = value;
                       });
                     },
                   ),
@@ -146,7 +127,7 @@ class _SettingsState extends State<Settings> {
                   child: Text(
                     'Key Annotations',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Colors.black.withOpacity(0.5),
                     ),
                   ),
@@ -154,11 +135,11 @@ class _SettingsState extends State<Settings> {
                 Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: Switch(
-                    value: annotations,
-                    activeColor: Colors.black,
+                    value: SettingsState.annotations,
+                    activeColor: Colors.blue,
                     onChanged: (value) {
                       setState(() {
-                        annotations = value;
+                        SettingsState.annotations = value;
                       });
                     },
                   ),
@@ -168,7 +149,7 @@ class _SettingsState extends State<Settings> {
           ),
           Expanded(
             flex: 5,
-            child: annotations ? annotationSettings() : Container(),
+            child: SettingsState.annotations ? annotationSettings() : Container(),
           ),
         ],
       ),
@@ -277,7 +258,7 @@ class _SettingsState extends State<Settings> {
               Text(
                 'Musical Convention',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14,
                   color: Colors.black.withOpacity(0.5),
                 ),
               ),
@@ -286,10 +267,10 @@ class _SettingsState extends State<Settings> {
                 child: ToggleButtons(
                   onPressed: (index) {
                     setState(() {
-                      musicalConvention = index == 0 ? [true, false] : [false, true];
+                      SettingsState.musicalConvention = index == 0 ? [true, false] : [false, true];
                     });
                   },
-                  isSelected: musicalConvention,
+                  isSelected: SettingsState.musicalConvention,
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(5.0),
@@ -309,7 +290,7 @@ class _SettingsState extends State<Settings> {
                   color: Colors.black.withOpacity(0.4),
                   highlightColor: Colors.grey.withOpacity(0.25),
                   selectedColor: Colors.white,
-                  fillColor: Colors.black,
+                  fillColor: Colors.blue,
                   borderRadius: BorderRadius.circular(30.0),
                   constraints: BoxConstraints(minHeight: screenHeight / 18),
                 ),
@@ -325,7 +306,7 @@ class _SettingsState extends State<Settings> {
               Text(
                 'Size',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14,
                   color: Colors.black.withOpacity(0.5),
                 ),
               ),
@@ -334,11 +315,11 @@ class _SettingsState extends State<Settings> {
                 child: ToggleButtons(
                   onPressed: (index) {
                     setState(() {
-                      annotationSize =
+                      SettingsState.annotationSize =
                           index == 0 ? [true, false, false] : index == 1 ? [false, true, false] : [false, false, true];
                     });
                   },
-                  isSelected: annotationSize,
+                  isSelected: SettingsState.annotationSize,
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(5.0),
@@ -365,7 +346,7 @@ class _SettingsState extends State<Settings> {
                   color: Colors.black.withOpacity(0.4),
                   highlightColor: Colors.grey.withOpacity(0.25),
                   selectedColor: Colors.white,
-                  fillColor: Colors.black,
+                  fillColor: Colors.blue,
                   borderRadius: BorderRadius.circular(30.0),
                   constraints: BoxConstraints(minHeight: screenHeight / 18),
                 ),
@@ -381,7 +362,7 @@ class _SettingsState extends State<Settings> {
               Text(
                 'Background',
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14,
                   color: Colors.black.withOpacity(0.5),
                 ),
               ),
@@ -390,11 +371,11 @@ class _SettingsState extends State<Settings> {
                 child: ToggleButtons(
                   onPressed: (index) {
                     setState(() {
-                      annotationBackground =
+                      SettingsState.annotationBackground =
                           index == 0 ? [true, false, false] : index == 1 ? [false, true, false] : [false, false, true];
                     });
                   },
-                  isSelected: annotationBackground,
+                  isSelected: SettingsState.annotationBackground,
                   children: <Widget>[
                     Container(
                       padding: EdgeInsets.all(5.0),
@@ -421,7 +402,7 @@ class _SettingsState extends State<Settings> {
                   color: Colors.black.withOpacity(0.4),
                   highlightColor: Colors.grey.withOpacity(0.25),
                   selectedColor: Colors.white,
-                  fillColor: Colors.black,
+                  fillColor: Colors.blue,
                   borderRadius: BorderRadius.circular(30.0),
                   constraints: BoxConstraints(minHeight: screenHeight / 18),
                 ),
