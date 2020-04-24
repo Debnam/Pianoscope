@@ -180,7 +180,7 @@ class _SettingsState extends State<Settings> {
             child: Container(
               height: screenWidth / 5.5,
               width: screenWidth / 5.5,
-              color: Colors.blue,
+              color: Color(0xff00e5ff),
               child: Center(
                 child: selectedIcon(0, isSelected),
               ),
@@ -191,7 +191,7 @@ class _SettingsState extends State<Settings> {
             child: Container(
               height: screenWidth / 5.5,
               width: screenWidth / 5.5,
-              color: Colors.lightGreenAccent,
+              color: Color(0xff39ff14).withOpacity(0.8),
               child: Center(
                 child: selectedIcon(1, isSelected),
               ),
@@ -202,7 +202,7 @@ class _SettingsState extends State<Settings> {
             child: Container(
               height: screenWidth / 5.5,
               width: screenWidth / 5.5,
-              color: Colors.yellow,
+              color: Colors.yellowAccent,
               child: Center(
                 child: selectedIcon(2, isSelected),
               ),
@@ -213,7 +213,7 @@ class _SettingsState extends State<Settings> {
             child: Container(
               height: screenWidth / 5.5,
               width: screenWidth / 5.5,
-              color: Colors.orange,
+              color: Color(0xffff8438).withOpacity(0.9),
               child: Center(
                 child: selectedIcon(3, isSelected),
               ),
@@ -224,7 +224,7 @@ class _SettingsState extends State<Settings> {
             child: Container(
               height: screenWidth / 5.5,
               width: screenWidth / 5.5,
-              color: Colors.pinkAccent,
+              color: Color(0xffff40a0),
               child: Center(
                 child: selectedIcon(4, isSelected),
               ),
