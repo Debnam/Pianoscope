@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pianoscope/components/key_selector.dart';
+import 'package:pianoscope/states/home_state.dart';
 import 'package:pianoscope/utilities/constants.dart';
 
 class ChordsPage extends StatefulWidget {
@@ -154,7 +155,11 @@ class ChordsPageState extends State<ChordsPage> {
                           child: FlatButton(
                             shape: CircleBorder(),
                             padding: EdgeInsets.zero,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pop();
+                              HomeState.lessonName = _note + _accidental + ' $_chord';
+                            },
                             child: Center(
                               child: Icon(
                                 Icons.play_arrow,

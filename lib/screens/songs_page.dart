@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:pianoscope/models/song.dart';
+import 'package:pianoscope/states/home_state.dart';
 import 'package:pianoscope/utilities/constants.dart';
 
 class SongsPage extends StatefulWidget {
@@ -192,7 +193,11 @@ class _SongsPageState extends State<SongsPage> {
                                     child: FlatButton(
                                       shape: CircleBorder(),
                                       padding: EdgeInsets.zero,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop();
+                                        HomeState.lessonName = songs[index].toString();
+                                      },
                                       child: Center(
                                         child: Icon(
                                           Icons.play_arrow,

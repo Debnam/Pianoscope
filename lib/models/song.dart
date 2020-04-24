@@ -12,4 +12,9 @@ class Song {
   String get artist => _artist;
 
   Difficulty get difficulty => _difficulty;
+
+  @override
+  String toString() {
+    return '$title - $artist';
+  }
 }
