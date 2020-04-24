@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pianoscope/screens/lesson_selection.dart';
+import 'package:pianoscope/states/home_state.dart';
 
 double screenHeight;
 double screenWidth;
@@ -132,7 +133,7 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(3.0, 2.0, 3.0, 10.0),
           child: Text(
-            'Canon in D - Johann Pachelbel',
+            HomeState.lessonName,
             textAlign: TextAlign.center,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
