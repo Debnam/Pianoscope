@@ -214,4 +214,11 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Widget expandedContainer(int flex) {
+    return Expanded(
+      flex: flex,
+      child: Container(),
+    );
+  }
 }
