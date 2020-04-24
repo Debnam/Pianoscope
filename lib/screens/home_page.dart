@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pianoscope/screens/lesson_selection.dart';
+import 'package:pianoscope/screens/settings.dart';
 import 'package:pianoscope/states/home_state.dart';
 
 double screenHeight;
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Column(
             children: <Widget>[
-              oldHeader(),
+              header(),
               songTitle(),
               playButton(),
               expandedContainer(1),
@@ -53,24 +54,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget header() {
-    return Expanded(
-      flex: 4,
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/pianoscope_header.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        constraints: BoxConstraints.expand(),
-      ),
-    );
-  }
-
-  Widget oldHeader() {
     return Container(
-      padding: EdgeInsets.only(top: 20.0),
-      height: screenHeight / 4,
+      height: screenHeight / 5,
       constraints: BoxConstraints(minWidth: screenWidth),
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -79,51 +64,72 @@ class _HomePageState extends State<HomePage> {
           colors: [Colors.greenAccent, Colors.lightBlueAccent],
         ),
       ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 5.0),
-              child: Image(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/treble_clef.png'),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 10,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: RichText(
-                text: TextSpan(
-                  style: TextStyle(
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w300,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'Piano',
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'scope',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(15.0, screenHeight / 20, 15.0, 0.0),
+        child: Image(
+          image: AssetImage('assets/images/pianoscope_header.png'),
+        ),
       ),
     );
   }
+
+//  Widget oldHeader() {
+//    return Container(
+//      padding: EdgeInsets.only(top: 20.0),
+//      height: screenHeight / 4,
+//      constraints: BoxConstraints(minWidth: screenWidth),
+//      decoration: BoxDecoration(
+//        gradient: LinearGradient(
+//          begin: Alignment.topLeft,
+//          end: Alignment.bottomRight,
+//          colors: [Colors.greenAccent, Colors.lightBlueAccent],
+//        ),
+//      ),
+//      child: Row(
+//        crossAxisAlignment: CrossAxisAlignment.stretch,
+//        children: <Widget>[
+//          Expanded(
+//            flex: 3,
+//            child: Padding(
+//              padding: EdgeInsets.fromLTRB(10.0, 5.0, 0.0, 5.0),
+//              child: Image(
+//                fit: BoxFit.cover,
+//                image: AssetImage('assets/images/treble_clef.png'),
+//              ),
+//            ),
+//          ),
+//          Expanded(
+//            flex: 10,
+//            child: Align(
+//              alignment: Alignment.centerLeft,
+//              child: RichText(
+//                text: TextSpan(
+//                  style: TextStyle(
+//                    fontSize: 50.0,
+//                    fontWeight: FontWeight.w300,
+//                  ),
+//                  children: <TextSpan>[
+//                    TextSpan(
+//                      text: 'Piano',
+//                      style: TextStyle(
+//                        color: Colors.black,
+//                      ),
+//                    ),
+//                    TextSpan(
+//                      text: 'scope',
+//                      style: TextStyle(
+//                        color: Colors.white,
+//                      ),
+//                    ),
+//                  ],
+//                ),
+//              ),
+//            ),
+//          ),
+//        ],
+//      ),
+//    );
+//  }
 
   Widget songTitle() {
     return Expanded(
@@ -231,7 +237,9 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Settings()));
+            },
             icon: Icon(Icons.settings),
             iconSize: screenWidth / 9,
             color: Colors.black,

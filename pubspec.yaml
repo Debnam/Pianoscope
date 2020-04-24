@@ -37,11 +37,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/pianoscope_background.png
-    - assets/images/treble_clef.jpg
-    - assets/images/treble_clef.png
     - assets/images/scales.jpg
-    - assets/images/scales2.jpg
-    - assets/images/scales2.PNG
     - assets/images/chords.jpg
     - assets/images/songs.jpg
     - assets/images/pianoscope_header.png
